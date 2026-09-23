@@ -19,11 +19,11 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
-category: info
+title: "An IANA Registry for PEM Labels"
+abbrev: "PEM Label Registry"
+category: std
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-bonnell-lamps-pem-label-registry-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
