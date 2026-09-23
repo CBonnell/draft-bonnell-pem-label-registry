@@ -125,7 +125,7 @@ The initial contents of the registry are:
 | CERTIFICATE REQUEST   | {{RFC2986}}               | {{RFC7468}} |
 | PKCS7                 | {{RFC2315}}               | {{RFC7468}} |
 | CMS                   | {{RFC5652}}               | {{RFC7468}} |
-| PRIVATE KEY           | {{RFC5958}}               | {{RFC7468}} |
+| PRIVATE KEY           | {{RFC5208}}, {{RFC5958}}  | {{RFC7468}} |
 | ENCRYPTED PRIVATE KEY | {{RFC5958}}               | {{RFC7468}} |
 | ATTRIBUTE CERTIFICATE | {{RFC5755}}               | {{RFC7468}} |
 | PUBLIC KEY            | {{RFC5280}}               | {{RFC7468}} |
