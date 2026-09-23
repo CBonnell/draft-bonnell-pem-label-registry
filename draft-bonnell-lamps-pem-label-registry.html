@@ -1371,6 +1371,69 @@ the "label" ABNF production in <span><a href="https://rfc-editor.org/rfc/rfc7468
 </td>
           </tr>
           <tr>
+            <td class="text-left" rowspan="1" colspan="1">EC PRIVATE KEY</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC5915" class="cite xref">RFC5915</a>]</span>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC5915" class="cite xref">RFC5915</a>]</span>
+</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">PGP MESSAGE</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC9580" class="cite xref">RFC9580</a>]</span>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC9580" class="cite xref">RFC9580</a>]</span>
+</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">PGP PUBLIC KEY BLOCK</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC9580" class="cite xref">RFC9580</a>]</span>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC9580" class="cite xref">RFC9580</a>]</span>
+</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">PGP PRIVATE KEY BLOCK</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC9580" class="cite xref">RFC9580</a>]</span>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC9580" class="cite xref">RFC9580</a>]</span>
+</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">PGP SIGNATURE</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC9580" class="cite xref">RFC9580</a>]</span>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC9580" class="cite xref">RFC9580</a>]</span>
+</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">ECHCONFIG</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC9934" class="cite xref">RFC9934</a>]</span>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC9934" class="cite xref">RFC9934</a>]</span>
+</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">ENCODED SMD</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC7848" class="cite xref">RFC7848</a>]</span>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#RFC9361" class="cite xref">RFC9361</a>]</span>
+</td>
+          </tr>
+          <tr>
             <td class="text-left" rowspan="1" colspan="1">OCSP RESPONSE</td>
             <td class="text-left" rowspan="1" colspan="1">
               <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span>
@@ -1393,12 +1456,22 @@ document and remove this note.<a href="#section-5-6" class="pilcrow">¶</a></p>
 differ from an existing registration only in case or whitespace.<a href="#section-5.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-5.1-2.2">
-            <p id="section-5.1-2.2.1">The referenced specification clearly identifies the format of the
-encapsulated data (for example, the ASN.1 type and its encoding).<a href="#section-5.1-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-5.1-2.2.1">The use of the label conforms to the encapsulation boundaries and base64
+encoding defined in <span><a href="https://rfc-editor.org/rfc/rfc7468#section-3" class="relref">Section 3</a> of [<a href="#RFC7468" class="cite xref">RFC7468</a>]</span>, rather than a similar but
+distinct textual convention. For example, the "SSH2 PUBLIC KEY" label
+defined by <span>[<a href="#RFC4716" class="cite xref">RFC4716</a>]</span> uses an encapsulation boundary with a different
+number of dashes than <span>[<a href="#RFC7468" class="cite xref">RFC7468</a>]</span>, and the "ACME RESPONSE" label defined
+by <span>[<a href="#RFC8823" class="cite xref">RFC8823</a>]</span> encloses base64url-encoded data rather than the base64
+alphabet specified in <span><a href="https://rfc-editor.org/rfc/rfc4648#section-4" class="relref">Section 4</a> of [<a href="#RFC4648" class="cite xref">RFC4648</a>]</span>; neither is a suitable
+candidate for registration as currently specified.<a href="#section-5.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-5.1-2.3">
-            <p id="section-5.1-2.3.1">A new label is warranted, rather than reuse of an existing label whose
-format already accommodates the data.<a href="#section-5.1-2.3.1" class="pilcrow">¶</a></p>
+            <p id="section-5.1-2.3.1">The referenced specification clearly identifies the format of the
+encapsulated data (for example, the ASN.1 type and its encoding).<a href="#section-5.1-2.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-5.1-2.4">
+            <p id="section-5.1-2.4.1">A new label is warranted, rather than reuse of an existing label whose
+format already accommodates the data.<a href="#section-5.1-2.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-5.1-3">The experts may also approve registrations of labels already in widespread
@@ -1455,6 +1528,14 @@ use, provided a stable specification describing the format is available.<a href=
         <dd>
 <span class="refAuthor">Nystrom, M.</span> and <span class="refAuthor">B. Kaliski</span>, <span class="refTitle">"PKCS #10: Certification Request Syntax Specification Version 1.7"</span>, <span class="seriesInfo">RFC 2986</span>, <span class="seriesInfo">DOI 10.17487/RFC2986</span>, <time datetime="2000-11" class="refDate">November 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2986">https://www.rfc-editor.org/rfc/rfc2986</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC4648">[RFC4648]</dt>
+        <dd>
+<span class="refAuthor">Josefsson, S.</span>, <span class="refTitle">"The Base16, Base32, and Base64 Data Encodings"</span>, <span class="seriesInfo">RFC 4648</span>, <span class="seriesInfo">DOI 10.17487/RFC4648</span>, <time datetime="2006-10" class="refDate">October 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4648">https://www.rfc-editor.org/rfc/rfc4648</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4716">[RFC4716]</dt>
+        <dd>
+<span class="refAuthor">Galbraith, J.</span> and <span class="refAuthor">R. Thayer</span>, <span class="refTitle">"The Secure Shell (SSH) Public Key File Format"</span>, <span class="seriesInfo">RFC 4716</span>, <span class="seriesInfo">DOI 10.17487/RFC4716</span>, <time datetime="2006-11" class="refDate">November 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4716">https://www.rfc-editor.org/rfc/rfc4716</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC5208">[RFC5208]</dt>
         <dd>
 <span class="refAuthor">Kaliski, B.</span>, <span class="refTitle">"Public-Key Cryptography Standards (PKCS) #8: Private-Key Information Syntax Specification Version 1.2"</span>, <span class="seriesInfo">RFC 5208</span>, <span class="seriesInfo">DOI 10.17487/RFC5208</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5208">https://www.rfc-editor.org/rfc/rfc5208</a>&gt;</span>. </dd>
@@ -1471,9 +1552,33 @@ use, provided a stable specification describing the format is available.<a href=
         <dd>
 <span class="refAuthor">Farrell, S.</span>, <span class="refAuthor">Housley, R.</span>, and <span class="refAuthor">S. Turner</span>, <span class="refTitle">"An Internet Attribute Certificate Profile for Authorization"</span>, <span class="seriesInfo">RFC 5755</span>, <span class="seriesInfo">DOI 10.17487/RFC5755</span>, <time datetime="2010-01" class="refDate">January 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5755">https://www.rfc-editor.org/rfc/rfc5755</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC5915">[RFC5915]</dt>
+        <dd>
+<span class="refAuthor">Turner, S.</span> and <span class="refAuthor">D. Brown</span>, <span class="refTitle">"Elliptic Curve Private Key Structure"</span>, <span class="seriesInfo">RFC 5915</span>, <span class="seriesInfo">DOI 10.17487/RFC5915</span>, <time datetime="2010-06" class="refDate">June 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5915">https://www.rfc-editor.org/rfc/rfc5915</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC5958">[RFC5958]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Turner, S.</span>, <span class="refTitle">"Asymmetric Key Packages"</span>, <span class="seriesInfo">RFC 5958</span>, <span class="seriesInfo">DOI 10.17487/RFC5958</span>, <time datetime="2010-08" class="refDate">August 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5958">https://www.rfc-editor.org/rfc/rfc5958</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7848">[RFC7848]</dt>
+        <dd>
+<span class="refAuthor">Lozano, G.</span>, <span class="refTitle">"Mark and Signed Mark Objects Mapping"</span>, <span class="seriesInfo">RFC 7848</span>, <span class="seriesInfo">DOI 10.17487/RFC7848</span>, <time datetime="2016-06" class="refDate">June 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7848">https://www.rfc-editor.org/rfc/rfc7848</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8823">[RFC8823]</dt>
+        <dd>
+<span class="refAuthor">Melnikov, A.</span>, <span class="refTitle">"Extensions to Automatic Certificate Management Environment for End-User S/MIME Certificates"</span>, <span class="seriesInfo">RFC 8823</span>, <span class="seriesInfo">DOI 10.17487/RFC8823</span>, <time datetime="2021-04" class="refDate">April 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8823">https://www.rfc-editor.org/rfc/rfc8823</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9361">[RFC9361]</dt>
+        <dd>
+<span class="refAuthor">Lozano, G.</span>, <span class="refTitle">"ICANN Trademark Clearinghouse (TMCH) Functional Specifications"</span>, <span class="seriesInfo">RFC 9361</span>, <span class="seriesInfo">DOI 10.17487/RFC9361</span>, <time datetime="2023-03" class="refDate">March 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9361">https://www.rfc-editor.org/rfc/rfc9361</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9580">[RFC9580]</dt>
+        <dd>
+<span class="refAuthor">Wouters, P., Ed.</span>, <span class="refAuthor">Huigens, D.</span>, <span class="refAuthor">Winter, J.</span>, and <span class="refAuthor">Y. Niibe</span>, <span class="refTitle">"OpenPGP"</span>, <span class="seriesInfo">RFC 9580</span>, <span class="seriesInfo">DOI 10.17487/RFC9580</span>, <time datetime="2024-07" class="refDate">July 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9580">https://www.rfc-editor.org/rfc/rfc9580</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9934">[RFC9934]</dt>
+      <dd>
+<span class="refAuthor">Farrell, S.</span>, <span class="refTitle">"Privacy-Enhanced Mail (PEM) File Format for Encrypted ClientHello (ECH)"</span>, <span class="seriesInfo">RFC 9934</span>, <span class="seriesInfo">DOI 10.17487/RFC9934</span>, <time datetime="2026-03" class="refDate">March 2026</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9934">https://www.rfc-editor.org/rfc/rfc9934</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>

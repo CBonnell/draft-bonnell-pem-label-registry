@@ -172,6 +172,20 @@ Table of Contents
        +-----------------------+----------------------+-----------+
        | PUBLIC KEY            | [RFC5280]            | [RFC7468] |
        +-----------------------+----------------------+-----------+
+       | EC PRIVATE KEY        | [RFC5915]            | [RFC5915] |
+       +-----------------------+----------------------+-----------+
+       | PGP MESSAGE           | [RFC9580]            | [RFC9580] |
+       +-----------------------+----------------------+-----------+
+       | PGP PUBLIC KEY BLOCK  | [RFC9580]            | [RFC9580] |
+       +-----------------------+----------------------+-----------+
+       | PGP PRIVATE KEY BLOCK | [RFC9580]            | [RFC9580] |
+       +-----------------------+----------------------+-----------+
+       | PGP SIGNATURE         | [RFC9580]            | [RFC9580] |
+       +-----------------------+----------------------+-----------+
+       | ECHCONFIG             | [RFC9934]            | [RFC9934] |
+       +-----------------------+----------------------+-----------+
+       | ENCODED SMD           | [RFC7848]            | [RFC9361] |
+       +-----------------------+----------------------+-----------+
        | OCSP RESPONSE         | [RFC6960]            | RFC XXXX  |
        +-----------------------+----------------------+-----------+
 
@@ -187,6 +201,16 @@ Table of Contents
    *  The label conforms to the syntax in Section 3 of [RFC7468] and
       does not differ from an existing registration only in case or
       whitespace.
+
+   *  The use of the label conforms to the encapsulation boundaries and
+      base64 encoding defined in Section 3 of [RFC7468], rather than a
+      similar but distinct textual convention.  For example, the "SSH2
+      PUBLIC KEY" label defined by [RFC4716] uses an encapsulation
+      boundary with a different number of dashes than [RFC7468], and the
+      "ACME RESPONSE" label defined by [RFC8823] encloses base64url-
+      encoded data rather than the base64 alphabet specified in
+      Section 4 of [RFC4648]; neither is a suitable candidate for
+      registration as currently specified.
 
    *  The referenced specification clearly identifies the format of the
       encapsulated data (for example, the ASN.1 type and its encoding).
@@ -237,6 +261,14 @@ Table of Contents
               DOI 10.17487/RFC2986, November 2000,
               <https://www.rfc-editor.org/rfc/rfc2986>.
 
+   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
+              Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
+              <https://www.rfc-editor.org/rfc/rfc4648>.
+
+   [RFC4716]  Galbraith, J. and R. Thayer, "The Secure Shell (SSH)
+              Public Key File Format", RFC 4716, DOI 10.17487/RFC4716,
+              November 2006, <https://www.rfc-editor.org/rfc/rfc4716>.
+
    [RFC5208]  Kaliski, B., "Public-Key Cryptography Standards (PKCS) #8:
               Private-Key Information Syntax Specification Version 1.2",
               RFC 5208, DOI 10.17487/RFC5208, May 2008,
@@ -257,9 +289,36 @@ Table of Contents
               RFC 5755, DOI 10.17487/RFC5755, January 2010,
               <https://www.rfc-editor.org/rfc/rfc5755>.
 
+   [RFC5915]  Turner, S. and D. Brown, "Elliptic Curve Private Key
+              Structure", RFC 5915, DOI 10.17487/RFC5915, June 2010,
+              <https://www.rfc-editor.org/rfc/rfc5915>.
+
    [RFC5958]  Turner, S., "Asymmetric Key Packages", RFC 5958,
               DOI 10.17487/RFC5958, August 2010,
               <https://www.rfc-editor.org/rfc/rfc5958>.
+
+   [RFC7848]  Lozano, G., "Mark and Signed Mark Objects Mapping",
+              RFC 7848, DOI 10.17487/RFC7848, June 2016,
+              <https://www.rfc-editor.org/rfc/rfc7848>.
+
+   [RFC8823]  Melnikov, A., "Extensions to Automatic Certificate
+              Management Environment for End-User S/MIME Certificates",
+              RFC 8823, DOI 10.17487/RFC8823, April 2021,
+              <https://www.rfc-editor.org/rfc/rfc8823>.
+
+   [RFC9361]  Lozano, G., "ICANN Trademark Clearinghouse (TMCH)
+              Functional Specifications", RFC 9361,
+              DOI 10.17487/RFC9361, March 2023,
+              <https://www.rfc-editor.org/rfc/rfc9361>.
+
+   [RFC9580]  Wouters, P., Ed., Huigens, D., Winter, J., and Y. Niibe,
+              "OpenPGP", RFC 9580, DOI 10.17487/RFC9580, July 2024,
+              <https://www.rfc-editor.org/rfc/rfc9580>.
+
+   [RFC9934]  Farrell, S., "Privacy-Enhanced Mail (PEM) File Format for
+              Encrypted ClientHello (ECH)", RFC 9934,
+              DOI 10.17487/RFC9934, March 2026,
+              <https://www.rfc-editor.org/rfc/rfc9934>.
 
 Acknowledgments
 
