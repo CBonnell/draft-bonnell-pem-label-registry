@@ -2,8 +2,8 @@
 
 
 
-WG Working Group                                              Y. N. Here
-Internet-Draft                                    Your Organization Here
+Limited Additional Mechanisms for PKIX and SMIME              C. Bonnell
+Internet-Draft                                      TurboLight Solutions
 Intended status: Standards Track                       23 September 2026
 Expires: 27 March 2027
 
@@ -13,23 +13,30 @@ Expires: 27 March 2027
 
 Abstract
 
-   TODO Abstract
+   RFC 7468 describes the textual encodings, commonly known as "PEM", of
+   several PKIX, PKCS, and CMS structures, each identified by a label
+   such as "CERTIFICATE".  No registry of these labels exists, which has
+   led to inconsistent and colliding use.  This document establishes an
+   IANA registry for PEM labels and defines the "OCSP RESPONSE" label.
 
 About This Document
 
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://example.com/LATEST.  Status information for this document may
-   be found at https://datatracker.ietf.org/doc/draft-bonnell-lamps-pem-
-   label-registry/.
+   https://CBonnell.github.io/draft-bonnell-pem-label-registry/draft-
+   bonnell-lamps-pem-label-registry.html.  Status information for this
+   document may be found at https://datatracker.ietf.org/doc/draft-
+   bonnell-lamps-pem-label-registry/.
 
-   Discussion of this document takes place on the WG Working Group
-   mailing list (mailto:WG@example.com), which is archived at
-   https://example.com/WG.
+   Discussion of this document takes place on the Limited Additional
+   Mechanisms for PKIX and SMIME Working Group mailing list
+   (mailto:spasm@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/spasm/.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/spasm/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/USER/REPO.
+   https://github.com/CBonnell/draft-bonnell-pem-label-registry.
 
 Status of This Memo
 
@@ -66,15 +73,33 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  Security Considerations
-   4.  IANA Considerations
-   5.  Normative References
+   3.  Textual Encoding of OCSP Responses
+   4.  Security Considerations
+   5.  IANA Considerations
+     5.1.  Guidance for Designated Experts
+   6.  References
+     6.1.  Normative References
+     6.2.  Informative References
    Acknowledgments
    Author's Address
 
 1.  Introduction
 
-   TODO Introduction
+   [RFC7468] defines the textual encoding of cryptographic structures in
+   which base64-encoded data is placed between encapsulation boundaries
+   of the form "-----BEGIN label-----" and "-----END label-----".  The
+   label identifies the format of the data carried in the base64 text.
+
+   [RFC7468] specifies a fixed set of labels, and other specifications
+   have since defined or used additional labels.  Without a registry,
+   implementers have no authoritative place to find which labels are in
+   use or which document defines the format of the encapsulated data,
+   and specification authors have no way to avoid collisions.
+
+   This document creates the "PEM Labels" registry and populates it with
+   the labels defined in [RFC7468].  It also defines a label for OCSP
+   responses (Section 3).  It does not change the textual encoding
+   itself.
 
 2.  Conventions and Definitions
 
@@ -84,24 +109,153 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Security Considerations
+3.  Textual Encoding of OCSP Responses
 
-   TODO Security
+   OCSP responses [RFC6960] are encoded using the "OCSP RESPONSE" label.
+   The encoded data MUST be a DER-encoded OCSPResponse as described in
+   Section 4.2.1 of [RFC6960].
 
-4.  IANA Considerations
+   Generators MUST use the "OCSP RESPONSE" label when encoding an OCSP
+   response.  All other rules for generators and parsers in [RFC7468]
+   apply.
 
-   This document has no IANA actions.
+4.  Security Considerations
 
-5.  Normative References
+   This document only creates a registry and introduces no new security
+   considerations.  The security considerations of [RFC7468] continue to
+   apply.
+
+   Registration of a label does not imply that the format it identifies,
+   or any algorithm used with that format, is secure or recommended.
+   Parsers are reminded that the label is an unauthenticated hint, and
+   the encapsulated data needs to be validated according to the
+   specification of its format regardless of the label.
+
+5.  IANA Considerations
+
+   IANA is requested to create a new registry titled "PEM Labels".  The
+   registration procedure is Specification Required [RFC8126].
+
+   Each registration contains the following fields:
+
+   Label:  The label that appears in the encapsulation boundaries.  It
+      MUST conform to the "label" ABNF production in Section 3 of
+      [RFC7468].
+
+   Reference:  The document that specifies the format of the data
+      carried in the base64 text.
+
+   The initial contents of the registry are:
+
+             +=======================+======================+
+             | Label                 | Reference            |
+             +=======================+======================+
+             | CERTIFICATE           | [RFC5280]            |
+             +-----------------------+----------------------+
+             | X509 CRL              | [RFC5280]            |
+             +-----------------------+----------------------+
+             | CERTIFICATE REQUEST   | [RFC2986]            |
+             +-----------------------+----------------------+
+             | PKCS7                 | [RFC2315]            |
+             +-----------------------+----------------------+
+             | CMS                   | [RFC5652]            |
+             +-----------------------+----------------------+
+             | PRIVATE KEY           | [RFC5208], [RFC5958] |
+             +-----------------------+----------------------+
+             | ENCRYPTED PRIVATE KEY | [RFC5958]            |
+             +-----------------------+----------------------+
+             | ATTRIBUTE CERTIFICATE | [RFC5755]            |
+             +-----------------------+----------------------+
+             | PUBLIC KEY            | [RFC5280]            |
+             +-----------------------+----------------------+
+             | OCSP RESPONSE         | [RFC6960], RFC XXXX  |
+             +-----------------------+----------------------+
+
+              Table 1: Initial PEM Labels Registry Contents
+
+   RFC Editor: please replace "RFC XXXX" with the RFC number assigned to
+   this document and remove this note.
+
+5.1.  Guidance for Designated Experts
+
+   The designated experts are expected to verify that:
+
+   *  The label conforms to the syntax in Section 3 of [RFC7468] and
+      does not differ from an existing registration only in case or
+      whitespace.
+
+   *  The referenced specification clearly identifies the format of the
+      encapsulated data (for example, the ASN.1 type and its encoding).
+
+   *  A new label is warranted, rather than reuse of an existing label
+      whose format already accommodates the data.
+
+   The experts may also approve registrations of labels already in
+   widespread use, provided a stable specification describing the format
+   is available.
+
+6.  References
+
+6.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
 
+   [RFC6960]  Santesson, S., Myers, M., Ankney, R., Malpani, A.,
+              Galperin, S., and C. Adams, "X.509 Internet Public Key
+              Infrastructure Online Certificate Status Protocol - OCSP",
+              RFC 6960, DOI 10.17487/RFC6960, June 2013,
+              <https://www.rfc-editor.org/rfc/rfc6960>.
+
+   [RFC7468]  Josefsson, S. and S. Leonard, "Textual Encodings of PKIX,
+              PKCS, and CMS Structures", RFC 7468, DOI 10.17487/RFC7468,
+              April 2015, <https://www.rfc-editor.org/rfc/rfc7468>.
+
+   [RFC8126]  Cotton, M., Leiba, B., and T. Narten, "Guidelines for
+              Writing an IANA Considerations Section in RFCs", BCP 26,
+              RFC 8126, DOI 10.17487/RFC8126, June 2017,
+              <https://www.rfc-editor.org/rfc/rfc8126>.
+
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+6.2.  Informative References
+
+   [RFC2315]  Kaliski, B., "PKCS #7: Cryptographic Message Syntax
+              Version 1.5", RFC 2315, DOI 10.17487/RFC2315, March 1998,
+              <https://www.rfc-editor.org/rfc/rfc2315>.
+
+   [RFC2986]  Nystrom, M. and B. Kaliski, "PKCS #10: Certification
+              Request Syntax Specification Version 1.7", RFC 2986,
+              DOI 10.17487/RFC2986, November 2000,
+              <https://www.rfc-editor.org/rfc/rfc2986>.
+
+   [RFC5208]  Kaliski, B., "Public-Key Cryptography Standards (PKCS) #8:
+              Private-Key Information Syntax Specification Version 1.2",
+              RFC 5208, DOI 10.17487/RFC5208, May 2008,
+              <https://www.rfc-editor.org/rfc/rfc5208>.
+
+   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
+              Housley, R., and W. Polk, "Internet X.509 Public Key
+              Infrastructure Certificate and Certificate Revocation List
+              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
+              <https://www.rfc-editor.org/rfc/rfc5280>.
+
+   [RFC5652]  Housley, R., "Cryptographic Message Syntax (CMS)", STD 70,
+              RFC 5652, DOI 10.17487/RFC5652, September 2009,
+              <https://www.rfc-editor.org/rfc/rfc5652>.
+
+   [RFC5755]  Farrell, S., Housley, R., and S. Turner, "An Internet
+              Attribute Certificate Profile for Authorization",
+              RFC 5755, DOI 10.17487/RFC5755, January 2010,
+              <https://www.rfc-editor.org/rfc/rfc5755>.
+
+   [RFC5958]  Turner, S., "Asymmetric Key Packages", RFC 5958,
+              DOI 10.17487/RFC5958, August 2010,
+              <https://www.rfc-editor.org/rfc/rfc5958>.
 
 Acknowledgments
 
@@ -109,6 +263,6 @@ Acknowledgments
 
 Author's Address
 
-   Your Name Here
-   Your Organization Here
-   Email: your.email@example.com
+   Corey Bonnell
+   TurboLight Solutions
+   Email: corey.bonnell@turbolightsolutions.com
