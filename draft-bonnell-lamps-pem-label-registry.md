@@ -37,11 +37,19 @@ normative:
 informative:
   RFC2315:
   RFC2986:
+  RFC4648:
+  RFC4716:
   RFC5208:
   RFC5280:
   RFC5652:
   RFC5755:
+  RFC5915:
   RFC5958:
+  RFC8823:
+  RFC7848:
+  RFC9361:
+  RFC9580:
+  RFC9934:
 
 --- abstract
 
@@ -129,6 +137,13 @@ The initial contents of the registry are:
 | ENCRYPTED PRIVATE KEY | {{RFC5958}}               | {{RFC7468}} |
 | ATTRIBUTE CERTIFICATE | {{RFC5755}}               | {{RFC7468}} |
 | PUBLIC KEY            | {{RFC5280}}               | {{RFC7468}} |
+| EC PRIVATE KEY        | {{RFC5915}}               | {{RFC5915}} |
+| PGP MESSAGE           | {{RFC9580}}               | {{RFC9580}} |
+| PGP PUBLIC KEY BLOCK  | {{RFC9580}}               | {{RFC9580}} |
+| PGP PRIVATE KEY BLOCK | {{RFC9580}}               | {{RFC9580}} |
+| PGP SIGNATURE         | {{RFC9580}}               | {{RFC9580}} |
+| ECHCONFIG             | {{RFC9934}}               | {{RFC9934}} |
+| ENCODED SMD           | {{RFC7848}}               | {{RFC9361}} |
 | OCSP RESPONSE         | {{RFC6960}}               | RFC XXXX    |
 {: title="Initial PEM Labels Registry Contents"}
 
@@ -141,6 +156,15 @@ The designated experts are expected to verify that:
 
 * The label conforms to the syntax in {{Section 3 of RFC7468}} and does not
   differ from an existing registration only in case or whitespace.
+
+* The use of the label conforms to the encapsulation boundaries and base64
+  encoding defined in {{Section 3 of RFC7468}}, rather than a similar but
+  distinct textual convention. For example, the "SSH2 PUBLIC KEY" label
+  defined by {{RFC4716}} uses an encapsulation boundary with a different
+  number of dashes than {{RFC7468}}, and the "ACME RESPONSE" label defined
+  by {{RFC8823}} encloses base64url-encoded data rather than the base64
+  alphabet specified in {{Section 4 of RFC4648}}; neither is a suitable
+  candidate for registration as currently specified.
 
 * The referenced specification clearly identifies the format of the
   encapsulated data (for example, the ASN.1 type and its encoding).
