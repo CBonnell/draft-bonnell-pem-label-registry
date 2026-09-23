@@ -48,7 +48,7 @@ informative:
 RFC 7468 describes the textual encodings, commonly known as "PEM", of
 several PKIX, PKCS, and CMS structures, each identified by a label such as
 "CERTIFICATE". No registry of these labels exists, which has led to
-inconsistent and colliding use. This document establishes an IANA registry
+discoverability issues and inconsistent use. This document establishes an IANA registry
 for PEM labels and defines the "OCSP RESPONSE" label.
 
 
@@ -94,8 +94,7 @@ considerations. The security considerations of {{RFC7468}} continue to
 apply.
 
 Registration of a label does not imply that the format it identifies, or any
-algorithm used with that format, is secure or recommended. Parsers are reminded
-that the label is an unauthenticated hint, and the encapsulated data needs to
+algorithm used with that format, is secure or recommended. The label is an unauthenticated hint, and the encapsulated data needs to
 be validated according to the specification of its format regardless of the
 label.
 
@@ -111,24 +110,26 @@ Label:
 : The label that appears in the encapsulation boundaries. It MUST conform to
   the "label" ABNF production in {{Section 3 of RFC7468}}.
 
+Format Reference:
+: The document that specifies the format of the data carried in the base64 text.
+
 Reference:
-: The document that specifies the format of the data carried in the base64
-  text.
+: The document that defines the label and its use with the textual encoding.
 
 The initial contents of the registry are:
 
-| Label                 | Reference                 |
-|:----------------------|:--------------------------|
-| CERTIFICATE           | {{RFC5280}}               |
-| X509 CRL              | {{RFC5280}}               |
-| CERTIFICATE REQUEST   | {{RFC2986}}               |
-| PKCS7                 | {{RFC2315}}               |
-| CMS                   | {{RFC5652}}               |
-| PRIVATE KEY           | {{RFC5208}}, {{RFC5958}}  |
-| ENCRYPTED PRIVATE KEY | {{RFC5958}}               |
-| ATTRIBUTE CERTIFICATE | {{RFC5755}}               |
-| PUBLIC KEY            | {{RFC5280}}               |
-| OCSP RESPONSE         | {{RFC6960}}, RFC XXXX     |
+| Label                 | Format Reference          | Reference   |
+|:----------------------|:--------------------------|:------------|
+| CERTIFICATE           | {{RFC5280}}               | {{RFC7468}} |
+| X509 CRL              | {{RFC5280}}               | {{RFC7468}} |
+| CERTIFICATE REQUEST   | {{RFC2986}}               | {{RFC7468}} |
+| PKCS7                 | {{RFC2315}}               | {{RFC7468}} |
+| CMS                   | {{RFC5652}}               | {{RFC7468}} |
+| PRIVATE KEY           | {{RFC5958}}               | {{RFC7468}} |
+| ENCRYPTED PRIVATE KEY | {{RFC5958}}               | {{RFC7468}} |
+| ATTRIBUTE CERTIFICATE | {{RFC5755}}               | {{RFC7468}} |
+| PUBLIC KEY            | {{RFC5280}}               | {{RFC7468}} |
+| OCSP RESPONSE         | {{RFC6960}}               | RFC XXXX    |
 {: title="Initial PEM Labels Registry Contents"}
 
 RFC Editor: please replace "RFC XXXX" with the RFC number assigned to this
