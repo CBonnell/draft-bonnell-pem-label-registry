@@ -26,7 +26,7 @@ venue:
 author:
  -
     fullname: Corey Bonnell
-    organization: TurboLight Solutions
+    organization: TurboLight Solutions, LLC
     email: corey.bonnell@turbolightsolutions.com
  -  fullname: Rob Stradling
     organization: Sectigo Ltd.
