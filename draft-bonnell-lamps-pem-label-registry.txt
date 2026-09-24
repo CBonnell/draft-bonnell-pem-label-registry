@@ -99,9 +99,9 @@ Table of Contents
    and specification authors have no way to avoid collisions.
 
    This document creates the "PEM Labels" registry and populates it with
-   the labels defined in [RFC7468].  It also defines a label for OCSP
-   responses (Section 3).  It does not change the textual encoding
-   itself.
+   labels previously defined in various documents.  It also defines a
+   label for OCSP responses (Section 3).  It does not change the textual
+   encoding itself.
 
 2.  Conventions and Definitions
 
