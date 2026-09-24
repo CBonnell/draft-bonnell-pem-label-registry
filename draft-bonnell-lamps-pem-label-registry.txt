@@ -4,8 +4,9 @@
 
 Limited Additional Mechanisms for PKIX and SMIME              C. Bonnell
 Internet-Draft                                      TurboLight Solutions
-Intended status: Standards Track                       23 September 2026
-Expires: 27 March 2027
+Intended status: Standards Track                            R. Stradling
+Expires: 28 March 2027                                      Sectigo Ltd.
+                                                       24 September 2026
 
 
                     An IANA Registry for PEM Labels
@@ -54,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 March 2027.
+   This Internet-Draft will expire on 28 March 2027.
 
 Copyright Notice
 
@@ -82,7 +83,7 @@ Table of Contents
      6.1.  Normative References
      6.2.  Informative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -324,8 +325,13 @@ Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
    Corey Bonnell
    TurboLight Solutions
    Email: corey.bonnell@turbolightsolutions.com
+
+
+   Rob Stradling
+   Sectigo Ltd.
+   Email: rob@sectigo.com
