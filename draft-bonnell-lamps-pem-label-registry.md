@@ -78,9 +78,10 @@ no authoritative place to find which labels are in use or which document
 defines the format of the encapsulated data, and specification authors have no
 way to avoid collisions.
 
-This document creates the "PEM Labels" registry and populates it with the
-labels defined in {{RFC7468}}. It also defines a label for OCSP responses
-({{ocsp-response}}). It does not change the textual encoding itself.
+This document creates the "PEM Labels" registry and populates it with
+labels previously defined in various documents. It also defines a label for OCSP
+responses ({{ocsp-response}}). It does not change the textual encoding
+itself.
 
 
 # Conventions and Definitions
