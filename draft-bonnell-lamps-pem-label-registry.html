@@ -10,9 +10,9 @@
 <meta content='
        RFC 7468 describes the textual encodings, commonly known as "PEM", of
 several PKIX, PKCS, and CMS structures, each identified by a label such as
-"CERTIFICATE". No registry of these labels exists, which has led to
+ CERTIFICATE . No registry of these labels exists, which has led to
 discoverability issues and inconsistent use. This document establishes an IANA registry
-for PEM labels and defines the "OCSP RESPONSE" label. 
+for PEM labels and defines the  OCSP RESPONSE  label. 
     ' name="description">
 <meta content="xml2rfc 3.34.1" name="generator">
 <meta content="PEM" name="keyword">
@@ -1089,9 +1089,9 @@ svg {
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">RFC 7468 describes the textual encodings, commonly known as "PEM", of
 several PKIX, PKCS, and CMS structures, each identified by a label such as
-"CERTIFICATE". No registry of these labels exists, which has led to
+<code>CERTIFICATE</code>. No registry of these labels exists, which has led to
 discoverability issues and inconsistent use. This document establishes an IANA registry
-for PEM labels and defines the "OCSP RESPONSE" label.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+for PEM labels and defines the <code>OCSP RESPONSE</code> label.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1205,7 +1205,7 @@ for PEM labels and defines the "OCSP RESPONSE" label.<a href="#section-abstract-
       </h2>
 <p id="section-1-1"><span>[<a href="#RFC7468" class="cite xref">RFC7468</a>]</span> defines the textual encoding of cryptographic structures in which
 base64-encoded data is placed between encapsulation boundaries of the form
-"-----BEGIN label-----" and "-----END label-----". The label identifies the
+<code>-----BEGIN label-----</code> and <code>-----END label-----</code>. The label identifies the
 format of the data carried in the base64 text.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2"><span>[<a href="#RFC7468" class="cite xref">RFC7468</a>]</span> specifies a fixed set of labels, and other specifications have
 since defined or used additional labels. Without a registry, implementers have
@@ -1233,10 +1233,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-textual-encoding-of-ocsp-re">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-textual-encoding-of-ocsp-re" class="section-name selfRef">Textual Encoding of OCSP Responses</a>
       </h2>
-<p id="section-3-1">OCSP responses <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span> are encoded using the "OCSP RESPONSE" label. The
+<p id="section-3-1">OCSP responses <span>[<a href="#RFC6960" class="cite xref">RFC6960</a>]</span> are encoded using the <code>OCSP RESPONSE</code> label. The
 encoded data <span class="bcp14">MUST</span> be a DER-encoded OCSPResponse as described in
 <span><a href="https://rfc-editor.org/rfc/rfc6960#section-4.2.1" class="relref">Section 4.2.1</a> of [<a href="#RFC6960" class="cite xref">RFC6960</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">Generators <span class="bcp14">MUST</span> use the "OCSP RESPONSE" label when encoding an OCSP response.
+<p id="section-3-2">Generators <span class="bcp14">MUST</span> use the <code>OCSP RESPONSE</code> label when encoding an OCSP response.
 All other rules for generators and parsers in <span>[<a href="#RFC7468" class="cite xref">RFC7468</a>]</span> apply.<a href="#section-3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1266,7 +1266,7 @@ registration procedure is Specification Required <span>[<a href="#RFC8126" class
         <dt id="section-5-3.1">Label:</dt>
         <dd style="margin-left: 1.5em" id="section-5-3.2">
           <p id="section-5-3.2.1">The label that appears in the encapsulation boundaries. It <span class="bcp14">MUST</span> conform to
-the "label" ABNF production in <span><a href="https://rfc-editor.org/rfc/rfc7468#section-3" class="relref">Section 3</a> of [<a href="#RFC7468" class="cite xref">RFC7468</a>]</span>.<a href="#section-5-3.2.1" class="pilcrow">¶</a></p>
+the <code>label</code> ABNF production in <span><a href="https://rfc-editor.org/rfc/rfc7468#section-3" class="relref">Section 3</a> of [<a href="#RFC7468" class="cite xref">RFC7468</a>]</span>.<a href="#section-5-3.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-5-3.3">Format Reference:</dt>
@@ -1463,9 +1463,9 @@ differ from an existing registration only in case or whitespace.<a href="#sectio
           <li class="normal" id="section-5.1-2.2">
             <p id="section-5.1-2.2.1">The use of the label conforms to the encapsulation boundaries and base64
 encoding defined in <span><a href="https://rfc-editor.org/rfc/rfc7468#section-3" class="relref">Section 3</a> of [<a href="#RFC7468" class="cite xref">RFC7468</a>]</span>, rather than a similar but
-distinct textual convention. For example, the "SSH2 PUBLIC KEY" label
+distinct textual convention. For example, the <code>SSH2 PUBLIC KEY</code> label
 defined by <span>[<a href="#RFC4716" class="cite xref">RFC4716</a>]</span> uses an encapsulation boundary with a different
-number of dashes than <span>[<a href="#RFC7468" class="cite xref">RFC7468</a>]</span>, and the "ACME RESPONSE" label defined
+number of dashes than <span>[<a href="#RFC7468" class="cite xref">RFC7468</a>]</span>, and the <code>ACME RESPONSE</code> label defined
 by <span>[<a href="#RFC8823" class="cite xref">RFC8823</a>]</span> encloses base64url-encoded data rather than the base64
 alphabet specified in <span><a href="https://rfc-editor.org/rfc/rfc4648#section-4" class="relref">Section 4</a> of [<a href="#RFC4648" class="cite xref">RFC4648</a>]</span>; neither is a suitable
 candidate for registration as currently specified.<a href="#section-5.1-2.2.1" class="pilcrow">¶</a></p>
