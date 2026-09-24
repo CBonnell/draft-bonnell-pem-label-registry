@@ -58,9 +58,9 @@ informative:
 
 RFC 7468 describes the textual encodings, commonly known as "PEM", of
 several PKIX, PKCS, and CMS structures, each identified by a label such as
-"CERTIFICATE". No registry of these labels exists, which has led to
+`CERTIFICATE`. No registry of these labels exists, which has led to
 discoverability issues and inconsistent use. This document establishes an IANA registry
-for PEM labels and defines the "OCSP RESPONSE" label.
+for PEM labels and defines the `OCSP RESPONSE` label.
 
 
 --- middle
@@ -69,7 +69,7 @@ for PEM labels and defines the "OCSP RESPONSE" label.
 
 {{RFC7468}} defines the textual encoding of cryptographic structures in which
 base64-encoded data is placed between encapsulation boundaries of the form
-"-----BEGIN label-----" and "-----END label-----". The label identifies the
+`-----BEGIN label-----` and `-----END label-----`. The label identifies the
 format of the data carried in the base64 text.
 
 {{RFC7468}} specifies a fixed set of labels, and other specifications have
@@ -90,11 +90,11 @@ labels defined in {{RFC7468}}. It also defines a label for OCSP responses
 
 # Textual Encoding of OCSP Responses {#ocsp-response}
 
-OCSP responses {{RFC6960}} are encoded using the "OCSP RESPONSE" label. The
+OCSP responses {{RFC6960}} are encoded using the `OCSP RESPONSE` label. The
 encoded data MUST be a DER-encoded OCSPResponse as described in
 {{Section 4.2.1 of RFC6960}}.
 
-Generators MUST use the "OCSP RESPONSE" label when encoding an OCSP response.
+Generators MUST use the `OCSP RESPONSE` label when encoding an OCSP response.
 All other rules for generators and parsers in {{RFC7468}} apply.
 
 
@@ -119,7 +119,7 @@ Each registration contains the following fields:
 
 Label:
 : The label that appears in the encapsulation boundaries. It MUST conform to
-  the "label" ABNF production in {{Section 3 of RFC7468}}.
+  the `label` ABNF production in {{Section 3 of RFC7468}}.
 
 Format Reference:
 : The document that specifies the format of the data carried in the base64 text.
@@ -162,9 +162,9 @@ The designated experts are expected to verify that:
 
 * The use of the label conforms to the encapsulation boundaries and base64
   encoding defined in {{Section 3 of RFC7468}}, rather than a similar but
-  distinct textual convention. For example, the "SSH2 PUBLIC KEY" label
+  distinct textual convention. For example, the `SSH2 PUBLIC KEY` label
   defined by {{RFC4716}} uses an encapsulation boundary with a different
-  number of dashes than {{RFC7468}}, and the "ACME RESPONSE" label defined
+  number of dashes than {{RFC7468}}, and the `ACME RESPONSE` label defined
   by {{RFC8823}} encloses base64url-encoded data rather than the base64
   alphabet specified in {{Section 4 of RFC4648}}; neither is a suitable
   candidate for registration as currently specified.
