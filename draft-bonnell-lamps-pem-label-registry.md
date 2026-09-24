@@ -28,6 +28,9 @@ author:
     fullname: Corey Bonnell
     organization: TurboLight Solutions
     email: corey.bonnell@turbolightsolutions.com
+ -  fullname: Rob Stradling
+    organization: Sectigo Ltd.
+    email: rob@sectigo.com
 
 normative:
   RFC6960:
