@@ -3,7 +3,7 @@
 
 
 Limited Additional Mechanisms for PKIX and SMIME              C. Bonnell
-Internet-Draft                                      TurboLight Solutions
+Internet-Draft                                 TurboLight Solutions, LLC
 Intended status: Standards Track                            R. Stradling
 Expires: 28 March 2027                                      Sectigo Ltd.
                                                        24 September 2026
@@ -328,7 +328,7 @@ Acknowledgments
 Authors' Addresses
 
    Corey Bonnell
-   TurboLight Solutions
+   TurboLight Solutions, LLC
    Email: corey.bonnell@turbolightsolutions.com
 
 
