@@ -1,0 +1,337 @@
+
+
+
+
+Limited Additional Mechanisms for PKIX and SMIME              C. Bonnell
+Internet-Draft                                 TurboLight Solutions, LLC
+Intended status: Standards Track                            R. Stradling
+Expires: 15 April 2027                                      Sectigo Ltd.
+                                                         12 October 2026
+
+
+                    An IANA Registry for PEM Labels
+             draft-bonnell-lamps-pem-label-registry-latest
+
+Abstract
+
+   RFC 7468 describes the textual encodings, commonly known as "PEM", of
+   several PKIX, PKCS, and CMS structures, each identified by a label
+   such as CERTIFICATE.  No registry of these labels exists, which has
+   led to discoverability issues and inconsistent use.  This document
+   establishes an IANA registry for PEM labels and defines the OCSP
+   RESPONSE label.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://CBonnell.github.io/draft-bonnell-pem-label-registry/draft-
+   bonnell-lamps-pem-label-registry.html.  Status information for this
+   document may be found at https://datatracker.ietf.org/doc/draft-
+   bonnell-lamps-pem-label-registry/.
+
+   Discussion of this document takes place on the Limited Additional
+   Mechanisms for PKIX and SMIME Working Group mailing list
+   (mailto:spasm@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/spasm/.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/spasm/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/CBonnell/draft-bonnell-pem-label-registry.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 15 April 2027.
+
+Copyright Notice
+
+   Copyright (c) 2026 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Conventions and Definitions
+   3.  Textual Encoding of OCSP Responses
+   4.  Security Considerations
+   5.  IANA Considerations
+     5.1.  Guidance for Designated Experts
+   6.  References
+     6.1.  Normative References
+     6.2.  Informative References
+   Acknowledgments
+   Authors' Addresses
+
+1.  Introduction
+
+   [RFC7468] defines the textual encoding of cryptographic structures in
+   which base64-encoded data is placed between encapsulation boundaries
+   of the form -----BEGIN label----- and -----END label-----. The label
+   identifies the format of the data carried in the base64 text.
+
+   [RFC7468] specifies a fixed set of labels, and other specifications
+   have since defined or used additional labels.  Without a registry,
+   implementers have no authoritative place to find which labels are in
+   use or which document defines the format of the encapsulated data,
+   and specification authors have no way to avoid collisions.
+
+   This document creates the "PEM Labels" registry and populates it with
+   labels previously defined in various documents.  It also defines a
+   label for OCSP responses (Section 3).  It does not change the textual
+   encoding itself.
+
+2.  Conventions and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  Textual Encoding of OCSP Responses
+
+   OCSP responses [RFC6960] are encoded using the OCSP RESPONSE label.
+   The encoded data MUST be a DER-encoded OCSPResponse as described in
+   Section 4.2.1 of [RFC6960].
+
+   Generators MUST use the OCSP RESPONSE label when encoding an OCSP
+   response.  All other rules for generators and parsers in [RFC7468]
+   apply.
+
+4.  Security Considerations
+
+   This document only creates a registry and introduces no new security
+   considerations.  The security considerations of [RFC7468] continue to
+   apply.
+
+   Registration of a label does not imply that the format it identifies,
+   or any algorithm used with that format, is secure or recommended.
+   The label is an unauthenticated hint, and the encapsulated data needs
+   to be validated according to the specification of its format
+   regardless of the label.
+
+5.  IANA Considerations
+
+   IANA is requested to create a new registry titled "PEM Labels".  The
+   registration procedure is Specification Required [RFC8126].
+
+   Each registration contains the following fields:
+
+   Label:  The label that appears in the encapsulation boundaries.  It
+      MUST conform to the label ABNF production in Section 3 of
+      [RFC7468].
+
+   Format Reference:  The document that specifies the format of the data
+      carried in the base64 text.
+
+   Reference:  The document that defines the label and its use with the
+      textual encoding.
+
+   The initial contents of the registry are:
+
+       +=======================+======================+===========+
+       | Label                 | Format Reference     | Reference |
+       +=======================+======================+===========+
+       | CERTIFICATE           | [RFC5280]            | [RFC7468] |
+       +-----------------------+----------------------+-----------+
+       | X509 CRL              | [RFC5280]            | [RFC7468] |
+       +-----------------------+----------------------+-----------+
+       | CERTIFICATE REQUEST   | [RFC2986]            | [RFC7468] |
+       +-----------------------+----------------------+-----------+
+       | PKCS7                 | [RFC2315]            | [RFC7468] |
+       +-----------------------+----------------------+-----------+
+       | CMS                   | [RFC5652]            | [RFC7468] |
+       +-----------------------+----------------------+-----------+
+       | PRIVATE KEY           | [RFC5208], [RFC5958] | [RFC7468] |
+       +-----------------------+----------------------+-----------+
+       | ENCRYPTED PRIVATE KEY | [RFC5958]            | [RFC7468] |
+       +-----------------------+----------------------+-----------+
+       | ATTRIBUTE CERTIFICATE | [RFC5755]            | [RFC7468] |
+       +-----------------------+----------------------+-----------+
+       | PUBLIC KEY            | [RFC5280]            | [RFC7468] |
+       +-----------------------+----------------------+-----------+
+       | EC PRIVATE KEY        | [RFC5915]            | [RFC5915] |
+       +-----------------------+----------------------+-----------+
+       | PGP MESSAGE           | [RFC9580]            | [RFC9580] |
+       +-----------------------+----------------------+-----------+
+       | PGP PUBLIC KEY BLOCK  | [RFC9580]            | [RFC9580] |
+       +-----------------------+----------------------+-----------+
+       | PGP PRIVATE KEY BLOCK | [RFC9580]            | [RFC9580] |
+       +-----------------------+----------------------+-----------+
+       | PGP SIGNATURE         | [RFC9580]            | [RFC9580] |
+       +-----------------------+----------------------+-----------+
+       | ECHCONFIG             | [RFC9934]            | [RFC9934] |
+       +-----------------------+----------------------+-----------+
+       | ENCODED SMD           | [RFC7848]            | [RFC9361] |
+       +-----------------------+----------------------+-----------+
+       | OCSP RESPONSE         | [RFC6960]            | RFC XXXX  |
+       +-----------------------+----------------------+-----------+
+
+              Table 1: Initial PEM Labels Registry Contents
+
+   RFC Editor: please replace "RFC XXXX" with the RFC number assigned to
+   this document and remove this note.
+
+5.1.  Guidance for Designated Experts
+
+   The designated experts are expected to verify that:
+
+   *  The label conforms to the syntax in Section 3 of [RFC7468] and
+      does not differ from an existing registration only in case or
+      whitespace.
+
+   *  The use of the label conforms to the encapsulation boundaries and
+      base64 encoding defined in Section 3 of [RFC7468], rather than a
+      similar but distinct textual convention.  For example, the SSH2
+      PUBLIC KEY label defined by [RFC4716] uses an encapsulation
+      boundary with a different number of dashes than [RFC7468], and the
+      ACME RESPONSE label defined by [RFC8823] encloses base64url-
+      encoded data rather than the base64 alphabet specified in
+      Section 4 of [RFC4648]; neither is a suitable candidate for
+      registration as currently specified.
+
+   *  The referenced specification clearly identifies the format of the
+      encapsulated data (for example, the ASN.1 type and its encoding).
+
+   *  A new label is warranted, rather than reuse of an existing label
+      whose format already accommodates the data.
+
+   The experts may also approve registrations of labels already in
+   widespread use, provided a stable specification describing the format
+   is available.
+
+6.  References
+
+6.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC6960]  Santesson, S., Myers, M., Ankney, R., Malpani, A.,
+              Galperin, S., and C. Adams, "X.509 Internet Public Key
+              Infrastructure Online Certificate Status Protocol - OCSP",
+              RFC 6960, DOI 10.17487/RFC6960, June 2013,
+              <https://www.rfc-editor.org/rfc/rfc6960>.
+
+   [RFC7468]  Josefsson, S. and S. Leonard, "Textual Encodings of PKIX,
+              PKCS, and CMS Structures", RFC 7468, DOI 10.17487/RFC7468,
+              April 2015, <https://www.rfc-editor.org/rfc/rfc7468>.
+
+   [RFC8126]  Cotton, M., Leiba, B., and T. Narten, "Guidelines for
+              Writing an IANA Considerations Section in RFCs", BCP 26,
+              RFC 8126, DOI 10.17487/RFC8126, June 2017,
+              <https://www.rfc-editor.org/rfc/rfc8126>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+6.2.  Informative References
+
+   [RFC2315]  Kaliski, B., "PKCS #7: Cryptographic Message Syntax
+              Version 1.5", RFC 2315, DOI 10.17487/RFC2315, March 1998,
+              <https://www.rfc-editor.org/rfc/rfc2315>.
+
+   [RFC2986]  Nystrom, M. and B. Kaliski, "PKCS #10: Certification
+              Request Syntax Specification Version 1.7", RFC 2986,
+              DOI 10.17487/RFC2986, November 2000,
+              <https://www.rfc-editor.org/rfc/rfc2986>.
+
+   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
+              Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
+              <https://www.rfc-editor.org/rfc/rfc4648>.
+
+   [RFC4716]  Galbraith, J. and R. Thayer, "The Secure Shell (SSH)
+              Public Key File Format", RFC 4716, DOI 10.17487/RFC4716,
+              November 2006, <https://www.rfc-editor.org/rfc/rfc4716>.
+
+   [RFC5208]  Kaliski, B., "Public-Key Cryptography Standards (PKCS) #8:
+              Private-Key Information Syntax Specification Version 1.2",
+              RFC 5208, DOI 10.17487/RFC5208, May 2008,
+              <https://www.rfc-editor.org/rfc/rfc5208>.
+
+   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
+              Housley, R., and W. Polk, "Internet X.509 Public Key
+              Infrastructure Certificate and Certificate Revocation List
+              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
+              <https://www.rfc-editor.org/rfc/rfc5280>.
+
+   [RFC5652]  Housley, R., "Cryptographic Message Syntax (CMS)", STD 70,
+              RFC 5652, DOI 10.17487/RFC5652, September 2009,
+              <https://www.rfc-editor.org/rfc/rfc5652>.
+
+   [RFC5755]  Farrell, S., Housley, R., and S. Turner, "An Internet
+              Attribute Certificate Profile for Authorization",
+              RFC 5755, DOI 10.17487/RFC5755, January 2010,
+              <https://www.rfc-editor.org/rfc/rfc5755>.
+
+   [RFC5915]  Turner, S. and D. Brown, "Elliptic Curve Private Key
+              Structure", RFC 5915, DOI 10.17487/RFC5915, June 2010,
+              <https://www.rfc-editor.org/rfc/rfc5915>.
+
+   [RFC5958]  Turner, S., "Asymmetric Key Packages", RFC 5958,
+              DOI 10.17487/RFC5958, August 2010,
+              <https://www.rfc-editor.org/rfc/rfc5958>.
+
+   [RFC7848]  Lozano, G., "Mark and Signed Mark Objects Mapping",
+              RFC 7848, DOI 10.17487/RFC7848, June 2016,
+              <https://www.rfc-editor.org/rfc/rfc7848>.
+
+   [RFC8823]  Melnikov, A., "Extensions to Automatic Certificate
+              Management Environment for End-User S/MIME Certificates",
+              RFC 8823, DOI 10.17487/RFC8823, April 2021,
+              <https://www.rfc-editor.org/rfc/rfc8823>.
+
+   [RFC9361]  Lozano, G., "ICANN Trademark Clearinghouse (TMCH)
+              Functional Specifications", RFC 9361,
+              DOI 10.17487/RFC9361, March 2023,
+              <https://www.rfc-editor.org/rfc/rfc9361>.
+
+   [RFC9580]  Wouters, P., Ed., Huigens, D., Winter, J., and Y. Niibe,
+              "OpenPGP", RFC 9580, DOI 10.17487/RFC9580, July 2024,
+              <https://www.rfc-editor.org/rfc/rfc9580>.
+
+   [RFC9934]  Farrell, S., "Privacy-Enhanced Mail (PEM) File Format for
+              Encrypted ClientHello (ECH)", RFC 9934,
+              DOI 10.17487/RFC9934, March 2026,
+              <https://www.rfc-editor.org/rfc/rfc9934>.
+
+Acknowledgments
+
+   TODO acknowledge.
+
+Authors' Addresses
+
+   Corey Bonnell
+   TurboLight Solutions, LLC
+   Email: corey.bonnell@turbolightsolutions.com
+
+
+   Rob Stradling
+   Sectigo Ltd.
+   Email: rob@sectigo.com
