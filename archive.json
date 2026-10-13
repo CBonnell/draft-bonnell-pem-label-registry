@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-11T04:26:59.201417+00:00",
+  "timestamp": "2026-10-13T05:47:25.245357+00:00",
   "repo": "CBonnell/draft-bonnell-pem-label-registry",
   "labels": [
     {
@@ -54,6 +54,47 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOUoCP8s8AAAABWrcyuw",
+      "title": "Register as \"Reserved\" all known labels that don't formally qualify",
+      "url": "https://github.com/CBonnell/draft-bonnell-pem-label-registry/issues/1",
+      "state": "OPEN",
+      "author": "robstradling",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Some labels are recognized widely but (as far as we know) have no formal specification (e.g., DSA PRIVATE KEY and other labels listed at https://share.google/aimode/QHZsPU85tr3cyx637).\n\nOther labels are specified but don't qualify for this registry (e.g., the two examples given in the document - ACME RESPONSE and SSH2 PUBLIC KEY).\n\nPart of the purpose of this registry is to enable \"specification authors...to avoid collisions\".  It would be a \"collision\" of sorts, and would certainly generate confusion, if a future spec author decided to define a PEM label named (e.g.,) \"ACME RESPONSE\" with content that encapsulates a base64 (not base64url) encoded ACME response.\n\nI think we could (should?) add to the registry as many of these widely recognized, non-qualifying labels as we can find, but mark them as \"Reserved\" rather than compatibly defined by a particular document.  It would be good to capture the reason for non-qualification, where known.  We would also need a way for a \"Reserved\" label to become qualified, in the event that missing documentation is either found or written (and there are no other reasons for non-qualification).\n\nWDYT?",
+      "createdAt": "2026-10-12T16:15:49Z",
+      "updatedAt": "2026-10-12T16:15:49Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOUoCP8s8AAAABWrl8tg",
+      "title": "Register new labels to support linting of PKI artifacts",
+      "url": "https://github.com/CBonnell/draft-bonnell-pem-label-registry/issues/2",
+      "state": "OPEN",
+      "author": "robstradling",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Various PKI linting software, such as [pkilint](https://github.com/digicert/pkilint), is able to operate on a variety of PKI artifacts.  Often PEM input is accepted, but not all of those artifact types have corresponding PEM labels.\n\nI think we should take this opportunity to register some new labels (in addition to \"OCSP RESPONSE\"), to support existing PKI linting use cases:\n- TBS CERTIFICATE\n- TBS CRL\n- TBS OCSP RESPONSE\n\nI think we should also register at least one label to support linting of Merkle Tree Certificates:\n- TBS CERTIFICATE LOG ENTRY",
+      "createdAt": "2026-10-12T16:27:38Z",
+      "updatedAt": "2026-10-12T16:40:13Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "CBonnell",
+          "authorAssociation": "OWNER",
+          "body": "I like this list. We might also want to consider registering `OCSP REQUEST`.",
+          "createdAt": "2026-10-12T16:40:13Z",
+          "updatedAt": "2026-10-12T16:40:13Z"
+        }
+      ]
+    }
+  ],
   "pulls": []
 }
