@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-18T03:23:25.942570+00:00",
+  "timestamp": "2026-10-20T03:45:48.738644+00:00",
   "repo": "CBonnell/draft-bonnell-pem-label-registry",
   "labels": [
     {
@@ -83,7 +83,7 @@
       "labels": [],
       "body": "Various PKI linting software, such as [pkilint](https://github.com/digicert/pkilint), is able to operate on a variety of PKI artifacts.  Often PEM input is accepted, but not all of those artifact types have corresponding PEM labels.\n\nI think we should take this opportunity to register some new labels (in addition to \"OCSP RESPONSE\"), to support existing PKI linting use cases:\n- TBS CERTIFICATE\n- TBS CRL\n- TBS OCSP RESPONSE\n\nI think we should also register at least one label to support linting of Merkle Tree Certificates:\n- TBS CERTIFICATE LOG ENTRY",
       "createdAt": "2026-10-12T16:27:38Z",
-      "updatedAt": "2026-10-12T16:40:13Z",
+      "updatedAt": "2026-10-19T19:55:33Z",
       "closedAt": null,
       "comments": [
         {
@@ -92,6 +92,13 @@
           "body": "I like this list. We might also want to consider registering `OCSP REQUEST`.",
           "createdAt": "2026-10-12T16:40:13Z",
           "updatedAt": "2026-10-12T16:40:13Z"
+        },
+        {
+          "author": "robstradling",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Also, maybe, `BEGIN CERTIFICATE PROPERTIES` (https://www.ietf.org/archive/id/draft-davidben-tls-trust-expr-01.html#section-5.3).",
+          "createdAt": "2026-10-19T19:55:33Z",
+          "updatedAt": "2026-10-19T19:55:33Z"
         }
       ]
     }
